@@ -5,9 +5,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div id="container" >
+    <ion-list [inset]="true">
+      <ion-item>
+        <ion-input type="text" placeholder="Nhập tài khoản"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Nhập mật khẩu"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="Login()" expand="block" fill="clear" shape="round">
+          Click me
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
+
