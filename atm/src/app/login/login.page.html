@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div id="container" >
+  <!-- <div id="container" >
     <ion-list [inset]="true">
       <ion-item>
         <ion-input type="text" placeholder="Nhập tài khoản"></ion-input>
@@ -19,6 +19,20 @@
         </ion-button>
       </ion-item>
     </ion-list>
-  </div>
-</ion-content>
+  </div> -->
+  <form [formGroup]="myForm">
+    <ion-item>
+      <ion-label stacked="">Field 1</ion-label>
+      <ion-input formControlName="account" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked="">Field 2</ion-label>
+      <ion-input formControlName="password" type="text"></ion-input>
+    </ion-item>
+    <ion-button (click)="saveForm()">Save Form</ion-button>
+    <!-- <ion-button (click)="addAccount()">Add</ion-button> -->
+    <ion-button (click)="getAccount()">Get</ion-button>
+    <ion-button (click)="deletAll()">Delete</ion-button>
+  </form>
 
+</ion-content>

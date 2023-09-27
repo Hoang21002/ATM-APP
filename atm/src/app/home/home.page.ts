@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../login/auth.service';
+import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
