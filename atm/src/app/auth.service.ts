@@ -14,9 +14,13 @@ export class AuthService {
         this.storageService.set('accountNo', accountNo);
         this.storageService.set('password',password)
     }
-    async getAccount(accountNo:string): Promise<any>{
+    async getAccount(): Promise<any>{
        const a = await this.storageService.get('accountNo')
        return a
+    }
+    async getPassword(): Promise<any>{
+        const pass = await this.storageService.get('password')
+        return pass
     }
 
     readFromStorage(): Promise<any>{
