@@ -12,13 +12,17 @@ import { AuthService } from '../auth.service';
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule]
 })
+
 export class LoginPage implements OnInit {
   myForm: FormGroup;
+  public alertButtons = ['OK'];
   account: string = ''
   idUser: string = 'Đoàn Đình Hoàng'
   userName: string = '2011384@dlu.edu.vn'
   userPassword: string = 'hoang123'
   soTien: number = 1000000
+  accounts: string[] = []
+  
   // statusLogin: boolean = true
   constructor(public formBuilder: FormBuilder, private router: Router, private autherSevice: AuthService) {
     this.myForm = formBuilder.group({
@@ -26,11 +30,13 @@ export class LoginPage implements OnInit {
       password: ['', Validators.required],
     })
   }
+
   addAccount(account: string, password: string) {
     let result = this.autherSevice.addAccount(account, password);
   }
   async getAccount(): Promise<any[]> {
     const a = await this.autherSevice.getAccount(this.userName)
+    this.accounts = a;
     return a
   }
   clearInput(){
@@ -56,7 +62,13 @@ export class LoginPage implements OnInit {
         alert('Tài khoảng tồn tại')
 
       }else{
-        this.addAccount(account,password)
+        this.addAccount(account,password)  
+        this.autherSevice.login()
+        this.router.navigate(['/home']);
+        this.autherSevice.idUser = this.idUser
+        this.autherSevice.userName = this.userName
+        this.autherSevice.userPassword = this.userPassword
+        this.autherSevice.soTien = this.soTien
       }
     }
     this.clearInput()
@@ -69,26 +81,9 @@ export class LoginPage implements OnInit {
     }
     return false
   }
-  public statusLogin: boolean = true
   ngOnInit() {
   }
   canActivate() {
-
-  }
-  Login() {
-    if (this.userName == '2011384@dlu.edu.vn' && this.userPassword == 'hoang123') {
-      this.autherSevice.login()
-      this.router.navigate(['/home']);
-      this.autherSevice.idUser = this.idUser
-      this.autherSevice.userName = this.userName
-      this.autherSevice.userPassword = this.userPassword
-      this.autherSevice.soTien = this.soTien
-    } else {
-      this.statusLogin = false
-    }
-  }
-  isLoginIn() {
-    return this.statusLogin
   }
 
 }

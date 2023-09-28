@@ -33,6 +33,11 @@
     <!-- <ion-button (click)="addAccount()">Add</ion-button> -->
     <ion-button (click)="getAccount()">Get</ion-button>
     <ion-button (click)="deletAll()">Delete</ion-button>
+    <ion-button id="present-alert">Click Me</ion-button>
+    <ion-alert trigger="present-alert" header="Alert" subHeader="Important message" 
+    message=""
+    [buttons]=" alertButtons">
+    </ion-alert>
   </form>
 
 </ion-content>
