@@ -3,7 +3,7 @@ import { Route, Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
-
+import { PhotoService } from '../photo.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -18,7 +18,7 @@ export class HomePage implements OnInit {
   userName: string| undefined;
   userPassword: string | undefined
   soTien: number | undefined
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService,private photoservice:PhotoService) { }
   ngOnInit() {
     this.idUser=this.authService.idUser
     this.userName=this.authService.userName
@@ -28,5 +28,8 @@ export class HomePage implements OnInit {
   showUser(){
     this.authService.login()
     this.router.navigate(['/user'])
+  }
+  addPhotoToGallery() {
+    this.photoservice.addNewToGallery();
   }
 }
