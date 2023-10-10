@@ -24,7 +24,10 @@
       <ion-label>Số tiền còn lại</ion-label>
       <ion-label>{{soTien}}</ion-label>
     </ion-item>
-
-    
+    <ion-button (click)="ShowGoogleMap()" expand="block" fill="clear" shape="round">
+      <ion-icon slot="start" name="map-outline"></ion-icon>
+      Google Map
+    </ion-button>
   </ion-list>
+  
 </ion-content>

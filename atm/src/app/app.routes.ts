@@ -19,5 +19,9 @@ export const routes: Routes = [
     path: 'user',
     loadComponent: () => import('./user/user.page').then( m => m.UserPage),
     canActivate:[AuthGuard]
+  },  {
+    path: 'google-map',
+    loadComponent: () => import('./google-map/google-map.page').then( m => m.GoogleMapPage)
   },
+
 ];
